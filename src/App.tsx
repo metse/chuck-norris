@@ -1,25 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import Card from './components/Card';
+
+const AppSection = styled.section`
+  margin: 4em;
+`;
+
+const Header = styled.section`
+  height: 200px;
+  background: papayawhip;
+  padding: 2em;
+`;
+
+const Main = styled.section`
+  padding: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppSection>
+      <Header>
+        <h2>Welcome to the Chuck Norris API</h2>
+        <h3>This app is powered by GraphQL</h3>
+      </Header>
+      <h3>Select a category below</h3>
+      <Main>
+        <Card title={'Career'} />
+        <Card title={'Animal'} />
+        <Card title={'Movie'} />
+        <Card title={'Music'} />
+        <Card title={'Politcial'} />
+      </Main>
+    </AppSection>
   );
 }
 
