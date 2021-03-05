@@ -25,7 +25,6 @@ export const Main = styled.section`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
   flex-wrap: wrap;
 
   ${props => props.theme.breakpoints.maxPhone} {

@@ -56,7 +56,7 @@ function App() {
     <AppSection>
       <Header>
         <h2>Chuck Norris Facts API</h2>
-        <h3>powered by Apollo GraphQL</h3>
+        <h4>powered by Apollo GraphQL</h4>
       </Header>
       <Element name='fact' />
       <Text>
