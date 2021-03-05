@@ -12,7 +12,7 @@ export const FETCH_CATEGORIES = gql`
   }
 `;
 
-export const FETCH_RANDOM_JOKE = gql`
+export const FETCH_RANDOM_FACT = gql`
   query($category: String!) {
     random(category: $category) {
       value
@@ -33,22 +33,22 @@ interface Random {
   value: string
 }
 
-interface Joke {
+interface Fact {
   random: Random
 }
 
-interface JokeVars {
+interface FactVars {
   category: string;
 }
 
 function App() {
   const [category, setCategory] = useState('');
   const { loading, data } = useQuery<Categories>(FETCH_CATEGORIES, { fetchPolicy: 'network-only' });
-  const [fetchJoke, { data: fact, loading: fetching }] = useLazyQuery<Joke, JokeVars>(FETCH_RANDOM_JOKE);
+  const [fetchFact, { data: fact, loading: fetching }] = useLazyQuery<Fact, FactVars>(FETCH_RANDOM_FACT);
 
-  const handleFetchJoke = (category: string) => {
+  const fetchRandomFact = (category: string) => {
     setCategory(category);
-    fetchJoke({ variables: { category } });
+    fetchFact({ variables: { category } });
     scroller.scrollTo('fact', { duration: 1000, smooth: true });
   };
 
@@ -67,7 +67,7 @@ function App() {
       </Text>
       <Main>
         {data && data.categories.map((category: Category, key: number) =>
-          <Card key={key} title={category.name} onClick={handleFetchJoke} />)}
+          <Card key={key} title={category.name} onClick={fetchRandomFact} />)}
       </Main>
     </AppSection>
   );
