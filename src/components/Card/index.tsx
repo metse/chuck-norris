@@ -16,12 +16,16 @@ const CardWrapper = styled.div`
     -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   }
+
+  ${props => props.theme.breakpoints.maxPhone} {
+    width: 100%;
+  }
 `;
 
-function Card(props: { title: string }) {
-  const { title } = props;
+function Card(props: { title: string, onClick: (category: string) => void }) {
+  const { title, onClick } = props;
   return (
-    <CardWrapper>
+    <CardWrapper onClick={() => onClick(title)}>
       <h2>{title}</h2>
     </CardWrapper>
   );
