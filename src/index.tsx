@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ApolloProvider } from '@apollo/client';
+import { ThemeProvider } from 'styled-components';
 import './index.css';
-import App from './App';
+import App from './App/index';
 import reportWebVitals from './reportWebVitals';
+import client from './apollo';
+import theme from './utils/theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
